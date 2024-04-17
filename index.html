@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Avengers</title>
+</head>
+
+<body>
+    <main>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="overlay"></div>
+                    <img src="blob-scene-haikei.svg" alt=""> <!-- Updated here -->
+                    <div class="t-bold">ELECTRON</div>
+                    <div class="t-thin"><span>Racing</span>
+                        <div class="t-bg" style="background: linear-gradient(to right, #253800, #a6ff03)"></div>
+                    </div>
+                    <div class="quote">
+                        <div class="profile">
+                            <img src="blob-scene-haikei.svg" alt=""> <!-- Updated here -->
+                        </div>
+                    </div>
+                </div>
+              <div class="swiper-slide">
+                  <div class="overlay"></div>
+                  <img src="low-poly-grid-haikei.svg" alt=""> <!-- Updated here -->
+                  <div class="t-bold">ELECTRON</div>
+                  <div class="t-thin"><span>Racing</span>
+                      <div class="t-bg" style="background: linear-gradient(to right, #a6ff03, #253800)"></div>
+                  </div>
+                  <div class="quote">
+                      <div class="profile">
+                          <img src="low-poly-grid-haikei.svg" alt=""> <!-- Updated here -->
+                      </div>
+                  </div>
+              </div>
+              <div class="swiper-slide">
+                  <div class="overlay"></div>
+                  <img src="layered-peaks-haikei.svg" alt=""> <!-- Updated here -->
+                  <div class="t-bold">ELECTRON</div>
+                  <div class="t-thin"><span>Racing</span>
+                      <div class="t-bg" style="background: linear-gradient(to right, #253800, #a6ff03)"></div>
+                  </div>
+                  <div class="quote">
+                      <div class="profile">
+                          <img src="layered-peaks-haikei.svg" alt=""> <!-- Updated here -->
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var swiper = new Swiper(".swiper", {
+            autoplay: {
+                delay: 5000,
+            },
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            speed: 1000,
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 1,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            on: {
+                slideChange: function () {
+                    var currentSlide = this.slides[this.activeIndex];
+                    gsap.fromTo(currentSlide.querySelector("img"),
+                        {
+                            scale: 1.2,
+                        }, {
+                        scale: 1,
+                        duration: 5
+                    })
+                    gsap.fromTo(currentSlide.querySelector(".t-bold"),
+                        {
+                            y: 100,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1
+                        })
+                    gsap.fromTo(currentSlide.querySelector(".t-thin span"),
+                        {
+                            x: -100,
+                            opacity: 0
+                        },
+                        {
+                            x: 0,
+                            opacity: 1,
+                            duration: 1
+                        })
+                    gsap.fromTo(currentSlide.querySelector(".t-bg"),
+                        {
+                            width: "0",
+                        },
+                        {
+                            width: "112%",
+                            duration: 0.5,
+                            delay: 0.5
+                        })
+                    gsap.fromTo(currentSlide.querySelector(".quote"),
+                        {
+                            y: 200,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1,
+                            delay: 0.5
+                        })
+                    gsap.fromTo(currentSlide.querySelectorAll(".counter"),
+                        {
+                            y: 200,
+                            opacity: 0
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1,
+                            delay: 0.8
+                        })
+                },
+            },
+        });
+
+    </script>
+</body>
+
+</html>
